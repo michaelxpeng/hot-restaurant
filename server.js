@@ -13,8 +13,12 @@ var PORT = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var guests = [];
-var waitingList = [];
+// var guests = [{name: "yoda",
+// phone: "Yoda",
+// email: "Jedi Master",
+// id: 900,
+// }];
+// var waitingList = [];
 
 // Starts the server to begin listening
 // =============================================================
