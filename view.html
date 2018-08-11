@@ -31,15 +31,11 @@
             <div class="col-lg-12">
 
                 <!-- Current Tables in Use -->
-                <div class="panel panel-default">
+                <div class="panel panel-default" id="tables-div">
                     <div class="panel-heading">
                         <h4 class="panel-title">Current Reservations</h4>
                     </div>
                     <div class="panel-body" id="tableSection">
-                        <h3><strong>Name:</strong><span id="name"></span></h3>
-                        <h3><strong>Phone Number:</strong> <span id="phone"></span></h3>
-                        <h3><strong>Email:</strong> <span id="email"></span></h3>
-                        <h3><strong>ID:</strong> <span id="id"></span></h3>
                     </div>
                 </div>
 
@@ -64,17 +60,23 @@
 
     </div>
     <script type="text/javascript">
-       for (var i = 0; i < data.length; i++) {
-          $.get("/api/tables/", function(data) {
-            // console.log(data);
+    // $.get("/api/tables/", function(data) {
+    //     console.log(data)
+    // })
+    $.get("/api/tables/", function(data) {
+        for (var i = 0; i < data.length; i++) {
+       
+        // console.log(data);
             if (data) {
-              $("#name").text(data[i].name);
-              $("#phone").text(data[i].phone);
-              $("#email").text(data[i].email);
-              $("#id").text(data[i].id);
+                var newTable = $('<div>').prop('id' , 'table' + i)
+                newTable.append($('<h3>').html('<strong>Name: </strong>'+data[i].name+'<span id="name">'));
+                newTable.append($('<h3>').html('<strong>Phone: </strong>'+data[i].phone+'<span id="name">'));
+                newTable.append($('<h3>').html('<strong>Email: </strong>'+data[i].email+'<span id="name">'));
+                newTable.append($('<h3>').html('<strong>ID: </strong>'+data[i].id+'<span id="name">'));
+                $('#tables-div').append(newTable)
             }
-          });
         }
-      </script>
+    })
+    </script>
 </body>
 </html>
