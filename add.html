@@ -69,7 +69,7 @@
         name: $("#name").val().trim(),
         phone: $("#phone").val().trim(),
         email: $("#email").val().trim(),
-        forcePoints: $("#id").val().trim()
+        id: $("#id").val().trim()
       };
 
       $.post("/api/table", newTable)
